@@ -12,7 +12,7 @@
 // local refs (increase compression)
 var $event = $.event,
 // ref the drop special event config
-drop = $event.special.drop,
+drop = $event.special.edrop,
 // old drop event add method
 origadd = drop.add,
 // old drop event teradown method

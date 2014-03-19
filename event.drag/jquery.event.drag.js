@@ -143,8 +143,8 @@ drag = $special.drag = {
 		// remember how many interactions are propagating
 		dd.propagates = dd.interactions.length;
 		// locate and init the drop targets
-		if ( dd.drop !== false && $special.drop ) 
-			$special.drop.handler( event, dd );
+		if ( dd.drop !== false && $special.edrop ) 
+			$special.edrop.handler( event, dd );
 		// disable text selection
 		drag.textselect( false ); 
 		// bind additional events...
@@ -194,8 +194,8 @@ drag = $special.drag = {
 					drag.hijack( event, "drag", dd );
 					if ( dd.propagates ){
 						// manage drop events
-						if ( dd.drop !== false && $special.drop )
-							$special.drop.handler( event, dd ); // "dropstart", "dropend"							
+						if ( dd.drop !== false && $special.edrop )
+							$special.edrop.handler( event, dd ); // "dropstart", "dropend"							
 						break; // "drag" not rejected, stop		
 					}
 					event.type = "mouseup"; // helps "drop" handler behave
@@ -209,8 +209,8 @@ drag = $special.drag = {
 				else 
 					$event.remove( document, "mousemove mouseup", drag.handler ); // remove page events	
 				if ( dd.dragging ){
-					if ( dd.drop !== false && $special.drop )
-						$special.drop.handler( event, dd ); // "drop"
+					if ( dd.drop !== false && $special.edrop )
+						$special.edrop.handler( event, dd ); // "drop"
 					drag.hijack( event, "dragend", dd ); // trigger "dragend"	
 				}
 				drag.textselect( true ); // enable text selection
@@ -357,9 +357,9 @@ drag = $special.drag = {
 // callback methods
 drag.callback.prototype = {
 	update: function(){
-		if ( $special.drop && this.available.length )
+		if ( $special.edrop && this.available.length )
 			$.each( this.available, function( i ){
-				$special.drop.locate( this, i );
+				$special.edrop.locate( this, i );
 			});
 	}
 };

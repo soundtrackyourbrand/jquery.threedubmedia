@@ -9,10 +9,10 @@
 
 ;(function($){ // secure $ jQuery alias
 
-// Events: drop, dropstart, dropend
+// Events: edrop, dropstart, dropend
 
 // add the jquery instance method
-$.fn.drop = function( str, arg, opts ){
+$.fn.edrop = function( str, arg, opts ){
 	// figure out the event type
 	var type = typeof str == "string" ? str : "",
 	// figure out the event handler...
@@ -28,7 +28,7 @@ $.fn.drop = function( str, arg, opts ){
 
 // DROP MANAGEMENT UTILITY
 // returns filtered drop target elements, caches their positions
-$.drop = function( opts ){ 
+$.edrop = function( opts ){ 
 	opts = opts || {};
 	// safely set new options...
 	drop.multi = opts.multi === true ? Infinity : 
@@ -43,7 +43,7 @@ $.drop = function( opts ){
 var $event = $.event, 
 $special = $event.special,
 // configure the drop special event
-drop = $.event.special.drop = {
+drop = $.event.special.edrop = {
 
 	// these are the default settings
 	multi: 1, // allow multiple drop winners per dragged element
